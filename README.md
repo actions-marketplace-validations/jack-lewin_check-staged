@@ -17,6 +17,8 @@ The check will pass if the latest commit in the PR has been merged into the stag
 
 ## Example usage
 
+See https://github.com/jack-lewin/demo-check-staging for a real example.
+
 ```yml
 # .github/workflows/check-branch-is-staged.yml
 
