@@ -1,0 +1,22 @@
+name: 'Check staged'
+description: 'Checks if a branch has been merged to staging.'
+author: 'jack-lewin'
+inputs:
+  staging-branch:
+    description: 'The name of the staging branch'
+    required: true
+    default: 'staging'
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ inputs.staging-branch }}
+
+    - name: Check if the source branch is staged
+      run: $GITHUB_ACTION_PATH/entrypoint.sh ${{ github.event.pull_request.head.sha }}
+      shell: bash
+branding:
+  icon: 'git-merge'
+  color: 'green'
